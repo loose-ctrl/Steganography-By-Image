@@ -42,11 +42,11 @@ cv2.imwrite(filename,x)
 
 print("\nYour message has been saved sucessfully")
 
-I1=Image(r'C:\Users\Mudrika Yadav\1.jpg') # path of image to be coded, which depends on users computer so kindly change the directory
+I1=Image(r'C:\Users\Ujjwal Yadav\1.jpg') # path of image to be coded, which depends on users computer so kindly change the directory
 display(I1)
 print("original image")
 #print('\n\n\n\n')
-I2=Image(r'C:\Users\Mudrika Yadav\{}'.format(filename)) # path of coded image, which depends on users computer so kindly change the directory 
+I2=Image(r'C:\Users\Ujjwal Yadav\{}'.format(filename)) # path of coded image, which depends on users computer so kindly change the directory 
 display(I2)
 print("coded image")
 
@@ -76,9 +76,12 @@ try:
                 
             print("secret message was : ",decrypt)
             print("\n\n *******Thanks  for  Using  our  Program.*******")
+            I3=Image(r'C:\Users\Ujjwal Yadav\{}'.format(filename1)) # path of coded image, which depends on users computer so kindly change the directory 
+            display(I3)
+            print("coded image")
             
         else:
-            print("(╯°□°)╯︵ ┻━┻ ")
+            print("Wrong Key. Try Again    (╯°□°)╯︵ ┻━┻ ")
     else:
         print("\n\n *******Quiting  Thanks  for  Using  our  Program.*******")
     
