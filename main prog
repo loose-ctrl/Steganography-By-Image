@@ -1,0 +1,88 @@
+import cv2
+import string
+import os
+from IPython.display import Image
+d={}
+c={}
+
+for i in range(255):
+    d[chr(i)]=i
+    c[i]=chr(i)
+    
+x=cv2.imread("1.jpg")
+
+i=x.shape[0]     # gives resolution
+j=x.shape[1]
+print("\n\n\n*******Welcome to 'Lose Ctrl' project of Stenography*******\n")
+print("Information About project:\nMade By:")
+print("> Ujjwal Yadav")
+print("> Kshitiz Singh")
+print("> Aadarsh Mishra\n")
+
+key=input("Enter key : ")
+text=input("\nEnter message to hide : ")
+
+kl=0
+tln = len(text)
+z = 0 #decides plane
+row =0 #no. of row
+colu =0 #no. of column
+
+l=len(text)
+
+for i in range(l):
+    x[row,colu,z]=d[text[i]]^d[key[kl]]
+    row=row+1
+    colu=colu+1
+    
+    kl=(kl+1)%len(key)
+filename=input("\nWrite filename with extension (.jpg):")
+    
+cv2.imwrite(filename,x) 
+
+print("\nYour message has been saved sucessfully")
+
+I1=Image(r'C:\Users\Mudrika Yadav\1.jpg') # path of image to be coded, which depends on users computer so kindly change the directory
+display(I1)
+print("original image")
+#print('\n\n\n\n')
+I2=Image(r'C:\Users\Mudrika Yadav\{}'.format(filename)) # path of coded image, which depends on users computer so kindly change the directory 
+display(I2)
+print("coded image")
+
+# decryption
+try:
+    filename1=input("Write filename with extension: ")
+    os.startfile(filename1)
+    kl=0
+    z=0 #decides plane
+    row=0 #no. of row
+    colu=0 #no. of column
+    print("[+]Decoding data from Image")
+
+    ch = input("\nDo you want to extract your message then press 'y' otherwise press any key : ")
+
+    if ch == "y" or ch == "Y":
+        key1=input("\n\nenter key to extract text : ")
+        decrypt=""
+
+        if key == key1 :
+            for i in range(l):
+                decrypt = decrypt + c[x[row,colu,z]^d[key[kl]]]
+                row = row + 1
+                colu = colu + 1
+                
+                kl=(kl+1)%len(key)
+                
+            print("secret message was : ",decrypt)
+            print("\n\n *******Thanks  for  Using  our  Program.*******")
+            
+        else:
+            print("(╯°□°)╯︵ ┻━┻ ")
+    else:
+        print("\n\n *******Quiting  Thanks  for  Using  our  Program.*******")
+    
+except Exception as e :
+    print("Error: ",e)
+    
+    
